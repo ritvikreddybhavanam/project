@@ -1,0 +1,134 @@
+.home{
+    background:#f8fafc;
+    min-height:100vh;
+}
+
+/* BANNER */
+.banner{
+    height:220px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    padding:40px 60px;
+    background:rgba(0,0,0,0.55);
+    color:white;
+}
+
+.banner h1{
+    font-size:48px;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.banner p{
+    font-size:17px;
+    line-height:1.7;
+    color:#d1d5db;
+}
+
+/* MAIN CONTENT */
+.home-content{
+    display:flex;
+    gap:25px;
+    padding:20px;
+    align-items:flex-start;
+}
+
+/* QUICK FILTERS */
+.quick-filters{
+    width:240px;
+    background:white;
+    border:1px solid #dbe1e7;
+    border-radius:12px;
+    padding:22px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+
+.quick-filters h2{
+    font-size:22px;
+    color:#0B2D72;
+    margin-bottom:22px;
+}
+
+/* FILTER OPTIONS */
+.filter-option{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:16px;
+    font-size:15px;
+    color:#374151;
+    cursor:pointer;
+}
+
+.filter-option input{
+    width:16px;
+    height:16px;
+    accent-color:#f97316;
+    cursor:pointer;
+}
+
+/* DIVIDER */
+.quick-filters hr{
+    margin:24px 0;
+    border:none;
+    border-top:1px solid #e5e7eb;
+}
+
+/* SUPPORT SECTION */
+.support-section h2{
+    font-size:22px;
+    color:#0B2D72;
+    margin-bottom:16px;
+}
+
+.support-section p{
+    font-size:14px;
+    line-height:1.8;
+    color:#6b7280;
+}
+
+/* SUPPORT BUTTON */
+.support-section button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    border:1.5px solid #0B2D72;
+    border-radius:10px;
+    background:white;
+    color:#0B2D72;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.support-section button:hover{
+    background:#0B2D72;
+    color:white;
+}
+
+/* RIGHT SECTION */
+.upcoming-flight{
+    flex:1;
+}
+
+/* HEADING */
+.heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.heading h2{
+    color:#0B2D72;
+    font-size:28px;
+    margin-bottom:5px;
+}
+
+.heading p{
+    color:#6b7280;
+    font-size:14px;
+}
