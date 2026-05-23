@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import RegisterPage from "./pages/RegisterPage.jsx";
 import Login from "./pages/Login.jsx";
 import Support from "./pages/Support.jsx";
+import Flights from "./pages/Flights.jsx";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/support" element={<Support />} />
+                <Route path="/flights" element={<Flights />} />
             </Routes>
         </BrowserRouter>
     );

@@ -1,0 +1,148 @@
+.flight-card{
+    width:100%;
+    background:white;
+    border-radius:18px;
+    padding:25px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.06);
+    border:1px solid rgba(0,0,0,0.06);
+}
+
+.flight-left{
+    width:160px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
+.flight-left img{
+    width:50px;
+    height:50px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.flight-left p{
+    text-align:center;
+    color:#666;
+    font-size:15px;
+}
+
+.flight-center{
+    flex:1;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+}
+
+.flight-time h2{
+    font-size:38px;
+    color:#0f172a;
+    margin-bottom:6px;
+}
+
+.flight-time span{
+    color:#666;
+    font-size:15px;
+}
+
+.flight-duration{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    padding:0 40px;
+}
+
+.flight-duration p{
+    color:#777;
+    font-size:14px;
+}
+
+.line{
+    width:100%;
+    height:2px;
+    background:#cbd5e1;
+    position:relative;
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#0ea5e9;
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.direct{
+    color:#0ea5e9;
+    font-size:12px;
+    font-weight:700;
+}
+
+.flight-right{
+    width:140px;
+    border-left:1px solid #e5e7eb;
+    padding-left:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+}
+
+.flight-right p{
+    color:#777;
+    font-size:13px;
+    margin:0;
+}
+
+.flight-right h1{
+    font-size:34px;
+    color:#0f172a;
+    margin:0;
+    font-weight:700;
+}
+
+.flight-right button{
+    background:#0f3b82;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.flight-right button:hover{
+    background:#08295e;
+}
+
+@media(max-width:1000px){
+
+    .flight-card{
+        flex-direction:column;
+        gap:30px;
+    }
+
+    .flight-center{
+        width:100%;
+        padding:0;
+    }
+
+    .flight-right{
+        border-left:none;
+        border-top:1px solid #e5e7eb;
+        padding-left:0;
+        padding-top:20px;
+    }
+}
