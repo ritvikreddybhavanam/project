@@ -2,66 +2,111 @@ import "../assets/styles/HomePage.css";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import BookingCard from "../components/BookingCard";
-import HistoryTable from "../components/HistoryTable";
 
 export default function Home() {
-    return (
-        <>
-            <Navbar />
-            <div className="home">
-                <div className="banner">
-                    <h1>My Bookings</h1>
-                    <p>
-                        Manage your upcoming journeys,
-                        review past travel history, and
-                        <br />
-                        download your e-tickets in one secure place
-                    </p>
-                </div>
-                <div className="home-content">
-                    <div className="quick-filters">
-                        <h2>Quick Filters</h2>
-                        <label className="filter-option">
-                            <input type="checkbox" defaultChecked />
-                            <span>Upcoming Trips</span>
-                        </label>
-                        <label className="filter-option">
-                            <input type="checkbox" />
-                            <span>Completed</span>
-                        </label>
-                        <label className="filter-option">
-                            <input type="checkbox" />
-                            <span>Cancelled</span>
-                        </label>
-                        <hr />
-                        <div className="support-section">
-                            <h2>Support</h2>
-                            <p>
-                                Need help with a specific booking?
-                                <br />
-                                Our 24/7 support team is here to assist.
-                            </p>
-                            <button>Contact Support</button>
-                        </div>
-                    </div>
-                    <div className="upcoming-flight">
-                        <div className="heading">
-                            <h2>Upcoming Flights</h2>
-                            <p>2 pending journeys</p>
-                        </div>
-                        <BookingCard />
-                        <BookingCard />
-                        <div className="history-section">
-                            <div className="heading">
-                                <h2>History</h2>
-                            </div>
-                            <HistoryTable />
-                        </div>
-                    </div>
-                </div>
+  return (
+    <>
+      <Navbar />
+      <div className="hero">
+        <div className="overlay"></div>
+
+        <div className="search-flights">
+          <h2>Your Journey, Redefined.</h2>
+
+          <p>
+            Experience the pinnacle of air travel with SkyGuide's
+            <br />
+            premium fleet and personalized service.
+          </p>
+
+          <div className="search">
+            <div className="field">
+              <label>FROM</label>
+              <input type="text" placeholder="JFK" />
             </div>
-            <Footer />
-        </>
-    );
+
+            <div className="field">
+              <label>TO</label>
+              <input type="text" placeholder="LHR" />
+            </div>
+
+            <div className="field">
+              <label>DEPARTURE</label>
+              <input type="date" />
+            </div>
+
+            <div className="field">
+              <label>PASSENGERS</label>
+
+              <select>
+                <option>1 Passenger</option>
+                <option>2 Passengers</option>
+                <option>3 Passengers</option>
+                <option>4 Passengers</option>
+              </select>
+            </div>
+
+            <button>Search Flights →</button>
+          </div>
+        </div>
+      </div>
+      <div className="features-section">
+        <h2>Why Choose SkyGuide?</h2>
+
+        <div className="features-container">
+          <div className="feature-card">
+            <span className="material-symbols-outlined feature-icon">
+              support_agent
+            </span>
+
+            <h3 className="feature-heading">24/7 Global Support</h3>
+
+            <p className="feature-description">
+              Our dedicated concierge team is available around the clock,
+              anywhere in the world ensuring your peace of mind.
+            </p>
+          </div>
+
+          <div className="feature-card">
+            <span className="material-symbols-outlined feature-icon">
+              payments
+            </span>
+
+            <h3 className="feature-heading">Transparent Pricing</h3>
+
+            <p className="feature-description">
+              No hidden fees or unexpected surcharges. What you see during the
+              search is exactly what you pay at checkout.
+            </p>
+          </div>
+
+          <div className="feature-card">
+            <span className="material-symbols-outlined feature-icon">
+              encrypted
+            </span>
+
+            <h3 className="feature-heading">Secure Booking</h3>
+
+            <p className="feature-description">
+              Utilizing industry-leading encryption to keep your personal data
+              and financial transactions completely secure.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="subscribe">
+        <span class="material-symbols-outlined">mail</span>
+          <h2 className="title">Elevate Your Travel Intelligence</h2>
+          <p className="description">
+              Join 500,000+ frequent and flyers and receive exclusive fare alerts, travel tips, and premium <br/>
+              offers directly in your inbox.
+          </p>
+          <div className="mail">
+              <input type="text" placeholder="Enter your business email"/>
+              <button className="mail-sub">Subscribe</button>
+          </div>
+      </div>
+      <Footer />
+    </>
+  );
 }

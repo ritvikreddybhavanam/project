@@ -7,7 +7,7 @@ export default function Login() {
     const navigate = useNavigate();
 
     return (
-        <>
+        <div className="page">
             <Navbar />
             <div className="login">
                 <h1>Welcome Back</h1>
@@ -33,6 +33,6 @@ export default function Login() {
                </p>
             </div>
             <Footer />
-        </>
+        </div>
     );
 }

@@ -1,11 +1,22 @@
-body {
+html,
+body{
     margin: 0;
+    padding: 0;
+    min-height: 100%;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
 
-.login {
-    width: 380px;
+.page{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.login{
+    flex: 1;
+    width: 90%;
+    max-width: 500px;
     background-color: white;
     margin: 40px auto;
     padding: 40px;
@@ -13,26 +24,26 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-.login h1 {
+.login h1{
     text-align: center;
     color: #002b6b;
     margin-bottom: 10px;
 }
 
-.login p {
+.login p{
     text-align: center;
     color: #555;
     margin-bottom: 30px;
 }
 
-.login label {
+.login label{
     font-size: 13px;
     font-weight: bold;
     color: #444;
 }
 
 .login input[type="text"],
-.login input[type="password"] {
+.login input[type="password"]{
     width: 100%;
     padding: 14px;
     margin-top: 8px;
@@ -42,34 +53,35 @@ body {
     font-size: 15px;
     box-sizing: border-box;
     outline: none;
+    transition: 0.3s;
 }
 
 .login input[type="text"]:focus,
-.login input[type="password"]:focus {
+.login input[type="password"]:focus{
     border-color: #ff7a1a;
     background-color: white;
 }
 
-.login div {
+.login div{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logged-in {
+.logged-in{
     display: flex;
     align-items: center;
     gap: 20px;
     margin: 18px 0;
 }
 
-.logged-in p {
+.logged-in p{
     margin: 0;
     font-size: 14px;
     color: #444;
 }
 
-.login input[type="submit"] {
+.login input[type="submit"]{
     width: 100%;
     padding: 14px;
     border: none;
@@ -80,14 +92,14 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
-.login input[type="submit"]:hover {
+.login input[type="submit"]:hover{
     background-color: #e96d12;
 }
 
-.login a {
+.login a{
     text-decoration: none;
     font-size: 12px;
     color: #ff7a1a;
@@ -95,21 +107,19 @@ body {
     transition: 0.3s;
 }
 
-/* HOVER EFFECT */
-.login a:hover {
+.login a:hover{
     color: #e96d12;
     text-decoration: underline;
 }
 
-.signup-text {
+.signup-text{
     text-align: center;
     margin-top: 22px;
     font-size: 14px;
     color: #555;
 }
 
-/* CREATE ACCOUNT LINK */
-.signup-text a {
+.signup-text a{
     color: #ff7a1a;
     font-weight: bold;
     text-decoration: none;
@@ -117,7 +127,7 @@ body {
     transition: 0.3s;
 }
 
-.signup-text a:hover {
+.signup-text a:hover{
     color: #e96d12;
     text-decoration: underline;
 }
