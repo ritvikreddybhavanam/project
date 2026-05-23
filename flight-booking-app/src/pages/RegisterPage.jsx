@@ -1,157 +1,256 @@
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import "../assets/styles/RegisterPage.css";
+
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase.js";
 
 export default function RegisterPage() {
-    const navigate = useNavigate();
 
-    return (
-        <>
-            <Navbar />
+  const navigate = useNavigate();
 
-            <div className="main-content">
+  const [name, setName] = useState("");
 
-                {/* LEFT SECTION */}
-                <div className="left">
+  const [email, setEmail] = useState("");
 
-                    <h1>
-                        Your Journey begins with a single click
-                    </h1>
+  const [password, setPassword] = useState("");
 
-                    <p>
-                        Join SkyGuide and access exclusive corporate-tier <br/>
-                        flight deals, intuitive seat selection, and a seamless <br/>
-                        travel experience designed for the modern navigator.
-                    </p>
+  const [showPassword, setShowPassword] = useState(false);
 
-                    <div className="tiles">
+  const registerUser = async () => {
 
-                        <div>
-                            <span className="material-symbols-outlined">
-                                speed
-                            </span>
+    if (!name || !email || !password) {
+      alert("Please fill all fields");
+      return;
+    }
 
-                            <p>FAST BOOKING</p>
-                        </div>
+    if (password.length < 8) {
+      alert("Password must be at least 8 characters");
+      return;
+    }
 
-                        <div>
-                            <span className="material-symbols-outlined">
-                                verified
-                            </span>
+    try {
 
-                            <p>TRUSTED TRAVEL</p>
-                        </div>
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-                        <div>
-                            <span className="material-symbols-outlined">
-                                support_agent
-                            </span>
+      alert("Account Created Successfully!");
 
-                            <p>24/7 SUPPORT</p>
-                        </div>
+      navigate("/login");
 
-                    </div>
-                </div>
+    } catch (error) {
 
-                {/* RIGHT SECTION */}
-                <div className="right">
+      if (error.code === "auth/email-already-in-use") {
+        alert("Email already exists");
+      }
 
-                    <h2>Create an Account</h2>
+      else if (error.code === "auth/invalid-email") {
+        alert("Invalid email address");
+      }
 
-                    <p>
-                        Already have an account?
-                        <a href="#" onClick={() => navigate("/login")}> Log In</a>
-                    </p>
+      else if (error.code === "auth/weak-password") {
+        alert("Weak password");
+      }
 
-                    <br />
+      else {
+        alert("Something went wrong");
+      }
+    }
+  };
 
-                    {/* FULL NAME */}
-                    <label>FULL NAME</label>
+  return (
+    <>
+      <Navbar />
 
-                    <br />
-                    <br />
+      <div className="main-content">
 
-                    <span>👤 </span>
+        {/* LEFT SECTION */}
 
-                    <input
-                        type="text"
-                        placeholder="John Doe"
-                    />
+        <div className="left">
 
-                    <br />
-                    <br />
-                    <br />
+          <h1>
+            Your Journey begins with a single click
+          </h1>
 
-                    {/* EMAIL */}
-                    <label>EMAIL ADDRESS</label>
+          <p>
+            Join SkyGuide and access exclusive corporate-tier
+            flight deals, intuitive seat selection, and a seamless
+            travel experience designed for the modern navigator.
+          </p>
 
-                    <br />
-                    <br />
+          <div className="tiles">
 
-                    <span>✉️ </span>
+            <div>
+              <span className="material-symbols-outlined">
+                speed
+              </span>
 
-                    <input
-                        type="email"
-                        placeholder="john@example.com"
-                    />
-
-                    <br />
-                    <br />
-                    <br />
-
-                    {/* PASSWORD */}
-                    <label>PASSWORD</label>
-
-                    <br />
-                    <br />
-
-                    <span>🔒 </span>
-
-                    <input
-                        type="password"
-                        placeholder="***********"
-                    />
-
-                    <span> 👁️</span>
-
-                    <p>
-                        Must be at least 8 characters long
-                        with a mix of numbers and symbols
-                    </p>
-
-                    <br />
-
-                    {/* CHECKBOX */}
-                    <input type="checkbox" />
-
-                    <span>
-                        {" "}I agree to SkyGuide's{" "}
-
-                        <a href="#">
-                            Terms of Service
-                        </a>
-
-                        {" "}and{" "}
-
-                        <a href="#">
-                            Privacy Policy
-                        </a>.
-                    </span>
-
-                    <br />
-                    <br />
-                    <br />
-
-                    {/* BUTTON */}
-                    <button>
-                        Create Account →
-                    </button>
-
-                </div>
+              <p>FAST BOOKING</p>
             </div>
 
-            <Footer />
-        </>
-    );
+            <div>
+              <span className="material-symbols-outlined">
+                verified
+              </span>
+
+              <p>TRUSTED TRAVEL</p>
+            </div>
+
+            <div>
+              <span className="material-symbols-outlined">
+                support_agent
+              </span>
+
+              <p>24/7 SUPPORT</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* RIGHT SECTION */}
+
+        <div className="right">
+
+          <h2>Create an Account</h2>
+
+          <p>
+            Already have an account?
+
+            <span
+              className="login-link"
+              onClick={() => navigate("/login")}
+            >
+              {" "}Log In
+            </span>
+
+          </p>
+
+          <br />
+
+          {/* FULL NAME */}
+
+          <label>FULL NAME</label>
+
+          <br />
+          <br />
+
+          <div className="input-box">
+
+            <span>👤</span>
+
+            <input
+              type="text"
+              placeholder="John Doe"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+
+          </div>
+
+          <br />
+          <br />
+
+          {/* EMAIL */}
+
+          <label>EMAIL ADDRESS</label>
+
+          <br />
+          <br />
+
+          <div className="input-box">
+
+            <span>✉️</span>
+
+            <input
+              type="email"
+              placeholder="john@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+          </div>
+
+          <br />
+          <br />
+
+          {/* PASSWORD */}
+
+          <label>PASSWORD</label>
+
+          <br />
+          <br />
+
+          <div className="input-box">
+
+            <span>🔒</span>
+
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="***********"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <span
+              className="eye-icon"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              👁️
+            </span>
+
+          </div>
+
+          <p className="password-info">
+            Must be at least 8 characters long
+            with a mix of numbers and symbols
+          </p>
+
+          <br />
+
+          {/* CHECKBOX */}
+
+          <div className="terms">
+
+            <input type="checkbox" />
+
+            <span>
+              I agree to SkyGuide's
+
+              <a href="#">
+                {" "}Terms of Service
+              </a>
+
+              {" "}and{" "}
+
+              <a href="#">
+                Privacy Policy
+              </a>
+
+            </span>
+
+          </div>
+
+          <br />
+          <br />
+
+          {/* BUTTON */}
+
+          <button onClick={registerUser}>
+            Create Account →
+          </button>
+
+        </div>
+
+      </div>
+
+      <Footer />
+    </>
+  );
 }
