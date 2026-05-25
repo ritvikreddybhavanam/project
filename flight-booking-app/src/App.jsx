@@ -10,6 +10,8 @@ import SeatSelection from "./pages/SeatSelection.jsx";
 import Payment from "./pages/Payment.jsx";
 import PaymentSuccess from "./pages/PaymentSuccess.jsx";
 import PreviousBookings from "./pages/PreviousBookings.jsx";
+import AdminDashboard from "./pages/AdminDashboard.jsx";
+import AdminBookings from "./pages/AdminBookings.jsx";
 
 function App() {
     return (
@@ -25,6 +27,8 @@ function App() {
                 <Route path="/payment" element={<Payment />} />
                 <Route path="/success" element={<PaymentSuccess />} />
                 <Route path="/previousbookings" element={<PreviousBookings />} />
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/admin/bookings" element={<AdminBookings />} />
             </Routes>
         </BrowserRouter>
     );

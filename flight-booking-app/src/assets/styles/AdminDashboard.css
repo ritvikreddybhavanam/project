@@ -1,0 +1,358 @@
+/* src/assets/styles/AdminControlPanel.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.skyadmin-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f7fb;
+    font-family: "Manrope", sans-serif;
+}
+
+/* SIDEBAR */
+
+.skyadmin-sidebar {
+    width: 270px;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    padding: 30px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.skyadmin-brand {
+    margin-bottom: 40px;
+}
+
+.skyadmin-brand-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: #2563eb;
+}
+
+.skyadmin-brand-subtitle {
+    color: #6b7280;
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+.skyadmin-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skyadmin-nav-button {
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #374151;
+    transition: 0.2s ease;
+}
+
+.skyadmin-nav-button:hover {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.skyadmin-active-nav {
+    background: #2563eb;
+    color: white;
+}
+
+/* MAIN */
+
+.skyadmin-main-section {
+    flex: 1;
+    margin-left: 270px;
+}
+
+/* HEADER */
+
+.skyadmin-header {
+    height: 80px;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skyadmin-search-container {
+    width: 420px;
+    background: #f3f4f6;
+    border-radius: 14px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skyadmin-search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+}
+
+.skyadmin-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.skyadmin-icon-button {
+    border: none;
+    background: #f3f4f6;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.skyadmin-icon-button:hover {
+    background: #e5e7eb;
+}
+
+/* CONTENT */
+
+.skyadmin-dashboard-content {
+    padding: 30px;
+}
+
+/* STATS */
+
+.skyadmin-stats-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.skyadmin-stat-box {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.skyadmin-stat-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    background: #eff6ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.skyadmin-stat-label {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.skyadmin-stat-number {
+    font-size: 34px;
+    font-weight: 800;
+    color: #111827;
+}
+
+/* ANALYTICS */
+
+.skyadmin-analytics-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-top: 30px;
+}
+
+.skyadmin-card-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.skyadmin-panel-header {
+    margin-bottom: 25px;
+}
+
+.skyadmin-panel-header h2 {
+    font-size: 22px;
+    color: #111827;
+}
+
+.skyadmin-route-card,
+.skyadmin-airline-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.skyadmin-route-card:last-child,
+.skyadmin-airline-card:last-child {
+    border-bottom: none;
+}
+
+.skyadmin-route-card h4,
+.skyadmin-airline-card h4 {
+    margin-bottom: 6px;
+    color: #111827;
+}
+
+.skyadmin-route-card p,
+.skyadmin-airline-card p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.skyadmin-airline-card h3 {
+    color: #2563eb;
+}
+
+/* TABLE */
+
+.skyadmin-table-panel {
+    margin-top: 30px;
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.skyadmin-table-wrapper {
+    overflow-x: auto;
+}
+
+.skyadmin-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.skyadmin-data-table thead {
+    background: #f9fafb;
+}
+
+.skyadmin-data-table th {
+    text-align: left;
+    padding: 16px;
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.skyadmin-data-table td {
+    padding: 18px 16px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #111827;
+}
+
+.skyadmin-flight-status {
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.skyadmin-flight-status.on\ time {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.skyadmin-flight-status.delayed {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.skyadmin-flight-status.in\ air {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.skyadmin-no-data {
+    text-align: center;
+    padding: 30px;
+    color: #6b7280;
+}
+
+.skyadmin-empty-text {
+    color: #6b7280;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+
+    .skyadmin-stats-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skyadmin-analytics-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .skyadmin-sidebar {
+        display: none;
+    }
+
+    .skyadmin-main-section {
+        margin-left: 0;
+    }
+
+    .skyadmin-header {
+        padding: 20px;
+        height: auto;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .skyadmin-search-container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .skyadmin-dashboard-content {
+        padding: 20px;
+    }
+
+    .skyadmin-stats-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .skyadmin-stat-number {
+        font-size: 28px;
+    }
+
+    .skyadmin-panel-header h2 {
+        font-size: 18px;
+    }
+}
