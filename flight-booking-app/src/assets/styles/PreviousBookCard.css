@@ -1,0 +1,233 @@
+.ticket-wrapper{
+    width:100%;
+    max-width:1300px;
+    margin:30px auto;
+
+    background:#ffffff;
+    border:1px solid #d8dde6;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.04);
+}
+
+.ticket-header-area {
+    padding: 32px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.ticket-airline-section {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 280px;
+}
+
+.ticket-logo-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+.ticket-airline-logo {
+    width: 58px;
+    height: 58px;
+    background: #082b57;
+    color: white;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+}
+
+.ticket-airline-name {
+    font-size: 30px;
+    color: #082b57;
+    margin-bottom: 4px;
+}
+
+.ticket-flight-info {
+    color: #5b6470;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.ticket-pnr{
+    color:#0ea5e9;
+    font-size:15px;
+    font-weight:700;
+}
+
+.ticket-route-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+.ticket-airport-box h1{
+    font-size:48px;
+    color:#082b57;
+}
+
+.ticket-airport-box p{
+    color:#4b5563;
+    font-size:17px;
+}
+
+.ticket-airport-box span{
+    font-size:20px;
+    font-weight:700;
+    color:#082b57;
+}
+
+
+.ticket-flight-path{
+    min-width:320px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+}
+
+.ticket-path-line {
+    width: 100%;
+    height: 2px;
+    background: #d9dee7;
+    position: absolute;
+    top: 14px;
+    left: 0;
+}
+
+.ticket-plane-icon {
+    background: white;
+    z-index: 2;
+    padding: 0 12px;
+    color: #0ea5e9;
+    font-size: 24px;
+}
+
+
+.ticket-flight-path p{
+    margin-top:10px;
+    color:#374151;
+    font-size:15px;
+    font-weight:600;
+}
+
+.ticket-status-section{
+    text-align:right;
+}
+
+
+.ticket-confirmed-badge{
+    display:inline-block;
+    background:#e9f8ef;
+    color:#1e9c53;
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.ticket-date-box p{
+    color:#6b7280;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+.ticket-date-box h3{
+    color:#082b57;
+    font-size:30px;
+}
+
+.ticket-footer-area {
+    border: 1px solid #d8dde6;
+    padding: 18px 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.ticket-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.ticket-action-btn {
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #374151;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ticket-manage-btn{
+    border:none;
+    background:#ff7a00;
+    color:white;
+    padding:14px 28px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.ticket-manage-btn:hover{
+    background:#e56d00;
+}
+
+@media(max-width:1100px){
+
+    .ticket-header-area{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .ticket-route-section{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .ticket-status-section{
+        width:100%;
+        text-align:left;
+    }
+}
+
+@media(max-width:768px){
+
+    .ticket-airport-box h1{
+        font-size:34px;
+    }
+
+    .ticket-airport-box span{
+        font-size:17px;
+    }
+
+    .ticket-flight-path{
+        min-width:180px;
+    }
+
+    .ticket-footer-area{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}

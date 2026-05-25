@@ -21,6 +21,7 @@ export default function Login() {
         try {
             await signInWithEmailAndPassword(auth, email, password);
             alert("Login Successful!");
+            localStorage.setItem("isLoggedIn", "true");
             navigate("/");
 
         } catch (error) {

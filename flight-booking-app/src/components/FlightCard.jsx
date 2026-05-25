@@ -5,6 +5,25 @@ export default function FlightCard({ flight }) {
 
     const navigate = useNavigate();
 
+    const handleBooking = () => {
+
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+        if (!isLoggedIn) {
+
+            alert("Please login to book flights");
+
+            navigate("/login");
+
+            return;
+        }
+
+        navigate("/booking", {
+            state: { flight }
+        });
+    };
+
+
     return (
 
         <div className="flight-card">
@@ -60,10 +79,7 @@ export default function FlightCard({ flight }) {
 
                 <h1>${flight.price}</h1>
 
-                <button onClick={() => navigate("/booking", {
-                    state: { flight }})
-                    }
-                >
+                <button onClick={handleBooking}>
                     SELECT FLIGHT
                 </button>
 

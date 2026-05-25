@@ -1,75 +1,81 @@
+import { useEffect, useState } from "react";
+
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import FlightCard from "../components/FlightCard.jsx";
 
 import "../assets/styles/Flights.css";
 
+import { db } from "../firebase";
+
+import {
+  collection,
+  getDocs
+} from "firebase/firestore";
+
 export default function Flights() {
-  const flights = [
-    {
-      airline: "Global Connect",
-      logo: "https://picsum.photos/60",
-      departureTime: "09:00 PM",
-      arrivalTime: "09:10 AM",
-      from: "JFK",
-      to: "LHR",
-      duration: "8h 10m",
-      price: 890,
-    },
 
-    {
-      airline: "SkyJet Airways",
-      logo: "https://picsum.photos/61",
-      departureTime: "07:30 AM",
-      arrivalTime: "01:45 PM",
-      from: "DEL",
-      to: "DXB",
-      duration: "4h 15m",
-      price: 520,
-    },
+  const [flights, setFlights] = useState([]);
 
-    {
-      airline: "Blue Wings",
-      logo: "https://picsum.photos/62",
-      departureTime: "11:00 PM",
-      arrivalTime: "06:20 AM",
-      from: "HYD",
-      to: "SIN",
-      duration: "6h 20m",
-      price: 760,
-    },
-  ];
+  useEffect(() => {
+    const fetchFlights = async () => {
+      try {
+        const querySnapshot = await getDocs(
+            collection(db, "Flights")
+        );
+        const flightsData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setFlights(flightsData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFlights();
+  }, []);
 
   return (
-    <div className="page">
-      <Navbar />
 
-      <div className="flights-container">
-        <section className="flights-section">
-          {/* SORT BAR */}
+      <div className="page">
 
-          <div className="sort-bar">
-            <p>{flights.length} flights found</p>
+        <Navbar />
 
-            <div className="sort-options">
-              <span>SORT BY</span>
+        <div className="flights-container">
 
-              <select>
-                <option>Cheapest First</option>
-                <option>Fastest</option>
-                <option>Best Value</option>
-              </select>
+          <section className="flights-section">
+
+            <div className="sort-bar">
+
+              <p>{flights.length} flights found</p>
+
+              <div className="sort-options">
+
+                <span>SORT BY</span>
+
+                <select>
+                  <option>Cheapest First</option>
+                  <option>Fastest</option>
+                  <option>Best Value</option>
+                </select>
+
+              </div>
+
             </div>
-          </div>
 
-          {/* FLIGHT CARDS */}
+            {flights.map((flight) => (
+                <FlightCard
+                    key={flight.id}
+                    flight={flight}
+                />
+            ))}
 
-          {flights.map((flight, index) => (
-            <FlightCard key={index} flight={flight} />
-          ))}
-        </section>
+          </section>
+
+        </div>
+
+        <Footer />
+
       </div>
-      <Footer />
-    </div>
   );
 }

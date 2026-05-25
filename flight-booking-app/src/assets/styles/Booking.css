@@ -2,18 +2,22 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
     background:#f5f7fa;
 }
 
+/* PAGE */
+
 .booking-page{
     min-height:100vh;
     display:flex;
     flex-direction:column;
 }
+
+/* MAIN CONTAINER */
 
 .booking-container{
     flex:1;
@@ -22,13 +26,18 @@ body{
     display:grid;
     grid-template-columns:2fr 1fr;
     gap:30px;
+    align-items:start;
 }
+
+/* LEFT SIDE */
 
 .booking-left{
     display:flex;
     flex-direction:column;
     gap:30px;
 }
+
+/* STEPPER */
 
 .stepper{
     display:flex;
@@ -48,14 +57,14 @@ body{
 .active-step span,
 .current-step span,
 .inactive-step span{
-    width:28px;
-    height:28px;
+    width:30px;
+    height:30px;
     border-radius:50%;
     display:flex;
     justify-content:center;
     align-items:center;
     font-size:13px;
-    font-weight:bold;
+    font-weight:700;
 }
 
 .active-step span{
@@ -66,38 +75,47 @@ body{
 .current-step span{
     border:2px solid #0f172a;
     color:#0f172a;
+    background:white;
 }
 
 .inactive-step span{
     border:2px solid #cbd5e1;
     color:#94a3b8;
+    background:white;
 }
 
 .active-step p,
 .current-step p,
 .inactive-step p{
-    font-size:12px;
+    font-size:13px;
     font-weight:700;
+    color:#0f172a;
 }
 
-.line{
+.step-line{
     width:40px;
     height:2px;
     background:#cbd5e1;
 }
 
+/* FORM CARD */
+
 .form-card{
     background:white;
     padding:35px;
-    border-radius:18px;
+    border-radius:20px;
     border:1px solid #e5e7eb;
+    box-shadow:0 4px 20px rgba(0,0,0,0.04);
 }
 
 .form-card h2{
     margin-bottom:30px;
     color:#0f172a;
     font-size:32px;
+    font-weight:700;
 }
+
+/* FORM GRID */
 
 .form-grid{
     display:grid;
@@ -118,16 +136,22 @@ body{
 }
 
 .form-grid input{
+    width:100%;
     padding:16px;
     border:1px solid #d1d5db;
-    border-radius:10px;
+    border-radius:12px;
     outline:none;
     font-size:15px;
+    transition:0.3s;
+    background:#fff;
 }
 
 .form-grid input:focus{
     border-color:#ff7a00;
+    box-shadow:0 0 0 4px rgba(255,122,0,0.12);
 }
+
+/* RIGHT SIDE */
 
 .booking-right{
     position:sticky;
@@ -135,32 +159,47 @@ body{
     height:fit-content;
 }
 
+/* SUMMARY CARD */
+
 .summary-card{
     background:white;
-    border-radius:18px;
+    border-radius:20px;
     overflow:hidden;
     border:1px solid #e5e7eb;
+    box-shadow:0 4px 20px rgba(0,0,0,0.04);
 }
+
+/* SUMMARY HEADER */
 
 .summary-header{
     background:#0f172a;
     color:white;
-    padding:20px;
+    padding:22px;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
+.summary-header h3{
+    font-size:20px;
+    font-weight:700;
+}
+
 .summary-header span{
     background:#ff7a00;
-    padding:6px 10px;
-    border-radius:6px;
+    padding:6px 12px;
+    border-radius:8px;
     font-size:12px;
+    font-weight:700;
 }
+
+/* SUMMARY CONTENT */
 
 .summary-content{
     padding:25px;
 }
+
+/* AIRLINE */
 
 .airline{
     display:flex;
@@ -170,110 +209,162 @@ body{
 }
 
 .airline img{
-    width:50px;
-    height:50px;
-    border-radius:10px;
+    width:55px;
+    height:55px;
+    border-radius:12px;
+    object-fit:cover;
 }
 
 .airline h4{
     color:#0f172a;
+    font-size:18px;
+    margin-bottom:4px;
 }
 
 .airline p{
-    color:#666;
+    color:#64748b;
     font-size:14px;
 }
 
-.route{
+/* ROUTE */
+
+.booking-route{
     display:flex;
     justify-content:space-between;
     align-items:center;
     margin-bottom:30px;
+    gap:20px;
 }
 
-.route h1{
+.booking-route h1{
     font-size:42px;
     color:#0f172a;
+    font-weight:800;
 }
 
-.route p{
-    color:#666;
+.booking-route p{
+    color:#64748b;
+    font-size:14px;
 }
 
-.route-line{
+/* ROUTE LINE */
+
+.booking-route-line{
     flex:1;
-    padding:0 20px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:8px;
+    gap:10px;
 }
 
-.route-line div{
+.booking-route-line div{
     width:100%;
     height:2px;
     background:#cbd5e1;
+    position:relative;
 }
 
-.route-line span{
+.booking-route-line div::after{
+    content:"";
+    position:absolute;
+    right:0;
+    top:50%;
+    transform:translateY(-50%);
+    width:10px;
+    height:10px;
+    background:#ff7a00;
+    border-radius:50%;
+}
+
+.booking-route-line span{
     font-size:13px;
-    color:#666;
+    color:#64748b;
 }
 
-.route-line p{
+.booking-route-line p{
     color:#0ea5e9;
     font-size:12px;
     font-weight:700;
+    letter-spacing:1px;
 }
 
-.price{
+/* PRICE */
+
+.booking-price{
     display:flex;
     flex-direction:column;
-    gap:15px;
+    gap:16px;
     border-top:1px solid #e5e7eb;
     border-bottom:1px solid #e5e7eb;
-    padding:20px 0;
+    padding:22px 0;
 }
 
-.price div{
-    display:flex;
-    justify-content:space-between;
-}
-
-.total{
+.booking-price div{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding-top:20px;
 }
 
-.total h2{
+.booking-price span{
+    color:#64748b;
+    font-size:15px;
+}
+
+.booking-price p{
+    font-weight:700;
+    color:#0f172a;
+}
+
+/* TOTAL */
+
+.booking-total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:24px;
+}
+
+.booking-total span{
+    font-size:18px;
+    font-weight:700;
+    color:#0f172a;
+}
+
+.booking-total h2{
     color:#ff7a00;
     font-size:34px;
+    font-weight:800;
 }
 
-.seat-btn{
+/* BUTTON */
+
+.booking-seat-btn{
     width:100%;
     margin-top:20px;
     border:none;
     background:#ff7a00;
     color:white;
     padding:18px;
-    border-radius:14px;
+    border-radius:16px;
     font-size:17px;
     font-weight:700;
     cursor:pointer;
     transition:0.3s;
+    box-shadow:0 10px 20px rgba(255,122,0,0.2);
 }
 
-.seat-btn:hover{
+.booking-seat-btn:hover{
     background:#e56d00;
+    transform:translateY(-2px);
 }
+
+/* RESPONSIVE */
 
 @media(max-width:1000px){
 
     .booking-container{
         grid-template-columns:1fr;
+        padding:30px 20px;
     }
 
     .form-grid{
@@ -282,5 +373,33 @@ body{
 
     .booking-right{
         position:static;
+    }
+
+    .booking-route h1{
+        font-size:32px;
+    }
+}
+
+@media(max-width:600px){
+
+    .form-card{
+        padding:25px;
+    }
+
+    .summary-content{
+        padding:20px;
+    }
+
+    .booking-route{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .booking-route-line{
+        width:100%;
+    }
+
+    .booking-total h2{
+        font-size:28px;
     }
 }

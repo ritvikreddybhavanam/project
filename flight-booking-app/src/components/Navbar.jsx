@@ -12,7 +12,7 @@ export default function Navbar() {
             <div className="nav">
                 <ul>
                     <li><a href="#" onClick={() => navigate("/flights")}>Flights</a></li>
-                    <li><a href="#">My Bookings</a></li>
+                    <li><a href="#" onClick={() => navigate("/previousbookings")}>My Bookings</a></li>
                     <li><a href="#" onClick={() => navigate("/support")}>Support</a></li>
                 </ul>
             </div>

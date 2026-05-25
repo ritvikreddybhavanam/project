@@ -1,15 +1,26 @@
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import "../assets/styles/SeatSelection.css";
+
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+
 import Stepper from "../components/Stepper.jsx";
 
 export default function SeatSelection() {
-    const basePrice = 969.5;
+
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // GET DATA FROM BOOKING PAGE
+
+    const flight = location.state?.flight;
+    const passenger = location.state?.passenger;
+
     const [selectedSeat, setSelectedSeat] = useState(null);
     const [upgradePrice, setUpgradePrice] = useState(0);
+
+    const basePrice = flight?.price + 84 || 0;
 
     const seats = [
         {
@@ -52,7 +63,10 @@ export default function SeatSelection() {
         },
     ];
 
+    // SEAT SELECT FUNCTION
+
     const handleSeatSelect = (seat) => {
+
         if (seat.unavailable) return;
 
         if (selectedSeat?.id === seat.id) {
@@ -65,17 +79,38 @@ export default function SeatSelection() {
         setUpgradePrice(seat.price);
     };
 
+    // CONFIRM FUNCTION
+
+    const handleConfirm = () => {
+
+        if (!selectedSeat) {
+            alert("Please select a seat");
+            return;
+        }
+
+        navigate("/payment", {
+            state: {
+                flight,
+                passenger,
+                selectedSeat,
+                totalPrice: basePrice + upgradePrice,
+            },
+        });
+    };
+
     return (
+
         <div className="seat-page">
+
             <Navbar />
 
             <main className="seat-main">
 
                 {/* PROGRESS BAR */}
 
-               <div className="stepper-wrapper">
-                   <Stepper step={3} />
-               </div>
+                <div className="stepper-wrapper">
+                    <Stepper step={3} />
+                </div>
 
                 <div className="seat-layout">
 
@@ -87,7 +122,14 @@ export default function SeatSelection() {
 
                             <div className="seat-header">
                                 <h1>Select Your Seat</h1>
-                                <p>Passenger: John Doe</p>
+
+                                <p>
+                                    Passenger:
+                                    {" "}
+                                    {passenger?.firstName}
+                                    {" "}
+                                    {passenger?.lastName}
+                                </p>
                             </div>
 
                             {/* LEGEND */}
@@ -116,24 +158,35 @@ export default function SeatSelection() {
                             <div className="aircraft">
 
                                 {seats.map((rowData) => (
-                                    <div className="seat-row" key={rowData.row}>
+
+                                    <div
+                                        className="seat-row"
+                                        key={rowData.row}
+                                    >
+
+                                        {/* LEFT SEATS */}
 
                                         <div className="seat-group">
 
-                                            {rowData.seats.slice(0, 3).map((seat) => (
-                                                <button
-                                                    key={seat.id}
-                                                    className={`
-                            seat-btn
-                            ${rowData.premium ? "premium-seat" : ""}
-                            ${seat.unavailable ? "unavailable-seat" : ""}
-                            ${selectedSeat?.id === seat.id ? "selected-seat" : ""}
-                          `}
-                                                    onClick={() => handleSeatSelect(seat)}
-                                                >
-                                                    {seat.id}
-                                                </button>
-                                            ))}
+                                            {rowData.seats
+                                                .slice(0, 3)
+                                                .map((seat) => (
+
+                                                    <button
+                                                        key={seat.id}
+                                                        className={`
+                                                        seat-btn
+                                                        ${rowData.premium ? "premium-seat" : ""}
+                                                        ${seat.unavailable ? "unavailable-seat" : ""}
+                                                        ${selectedSeat?.id === seat.id ? "selected-seat" : ""}
+                                                    `}
+                                                        onClick={() =>
+                                                            handleSeatSelect(seat)
+                                                        }
+                                                    >
+                                                        {seat.id}
+                                                    </button>
+                                                ))}
 
                                         </div>
 
@@ -141,22 +194,29 @@ export default function SeatSelection() {
                                             {rowData.row}
                                         </div>
 
+                                        {/* RIGHT SEATS */}
+
                                         <div className="seat-group">
 
-                                            {rowData.seats.slice(3).map((seat) => (
-                                                <button
-                                                    key={seat.id}
-                                                    className={`
-                            seat-btn
-                            ${rowData.premium ? "premium-seat" : ""}
-                            ${seat.unavailable ? "unavailable-seat" : ""}
-                            ${selectedSeat?.id === seat.id ? "selected-seat" : ""}
-                          `}
-                                                    onClick={() => handleSeatSelect(seat)}
-                                                >
-                                                    {seat.id}
-                                                </button>
-                                            ))}
+                                            {rowData.seats
+                                                .slice(3)
+                                                .map((seat) => (
+
+                                                    <button
+                                                        key={seat.id}
+                                                        className={`
+                                                        seat-btn
+                                                        ${rowData.premium ? "premium-seat" : ""}
+                                                        ${seat.unavailable ? "unavailable-seat" : ""}
+                                                        ${selectedSeat?.id === seat.id ? "selected-seat" : ""}
+                                                    `}
+                                                        onClick={() =>
+                                                            handleSeatSelect(seat)
+                                                        }
+                                                    >
+                                                        {seat.id}
+                                                    </button>
+                                                ))}
 
                                         </div>
 
@@ -171,11 +231,17 @@ export default function SeatSelection() {
 
                         <div className="seat-buttons">
 
-                            <button className="back-btn" onClick={() => navigate("/booking")}>
+                            <button
+                                className="back-btn"
+                                onClick={() => navigate("/booking")}
+                            >
                                 ← Back
                             </button>
 
-                            <button className="confirm-btn" onClick={() => navigate("/payment")}>
+                            <button
+                                className="confirm-btn"
+                                onClick={handleConfirm}
+                            >
                                 Confirm Seats →
                             </button>
 
@@ -188,15 +254,20 @@ export default function SeatSelection() {
                     <aside className="summary-card">
 
                         <div className="summary-top">
+
                             <h2>Flight Summary</h2>
-                            <p>Skyward Air • SK-402</p>
+
+                            <p>
+                                {flight?.airline}
+                            </p>
+
                         </div>
 
                         <div className="route">
 
                             <div>
-                                <h1>JFK</h1>
-                                <p>New York</p>
+                                <h1>{flight?.from}</h1>
+                                <p>{flight?.departureTime}</p>
                             </div>
 
                             <div className="route-line">
@@ -204,8 +275,8 @@ export default function SeatSelection() {
                             </div>
 
                             <div>
-                                <h1>LHR</h1>
-                                <p>London</p>
+                                <h1>{flight?.to}</h1>
+                                <p>{flight?.arrivalTime}</p>
                             </div>
 
                         </div>
@@ -215,24 +286,28 @@ export default function SeatSelection() {
                             <h3>Selected Seat</h3>
 
                             {selectedSeat ? (
+
                                 <div className="seat-info">
 
                                     <div>
                                         <h4>{selectedSeat.id}</h4>
-                                        <p>Standard Passenger</p>
+                                        <p>Passenger Seat</p>
                                     </div>
 
                                     <span>
-                    {selectedSeat.price > 0
-                        ? `+$${selectedSeat.price}`
-                        : "Free"}
-                  </span>
+                                        {selectedSeat.price > 0
+                                            ? `+$${selectedSeat.price}`
+                                            : "Free"}
+                                    </span>
 
                                 </div>
+
                             ) : (
+
                                 <p className="no-seat">
                                     No seat selected yet
                                 </p>
+
                             )}
 
                         </div>
@@ -241,7 +316,7 @@ export default function SeatSelection() {
 
                             <div>
                                 <span>Base Fare</span>
-                                <span>$845.00</span>
+                                <span>${flight?.price}</span>
                             </div>
 
                             <div>
@@ -251,14 +326,17 @@ export default function SeatSelection() {
 
                             <div>
                                 <span>Taxes & Fees</span>
-                                <span>$124.50</span>
+                                <span>$84.00</span>
                             </div>
 
                             <div className="total">
+
                                 <span>Total</span>
+
                                 <span>
-                  ${(basePrice + upgradePrice).toFixed(2)}
-                </span>
+                                    ${(basePrice + upgradePrice).toFixed(2)}
+                                </span>
+
                             </div>
 
                         </div>
@@ -270,6 +348,7 @@ export default function SeatSelection() {
             </main>
 
             <Footer />
+
         </div>
     );
 }

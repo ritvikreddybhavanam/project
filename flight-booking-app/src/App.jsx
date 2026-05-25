@@ -9,6 +9,7 @@ import Booking from "./pages/Booking.jsx";
 import SeatSelection from "./pages/SeatSelection.jsx";
 import Payment from "./pages/Payment.jsx";
 import PaymentSuccess from "./pages/PaymentSuccess.jsx";
+import PreviousBookings from "./pages/PreviousBookings.jsx";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/seat-selection" element={<SeatSelection />} />
                 <Route path="/payment" element={<Payment />} />
                 <Route path="/success" element={<PaymentSuccess />} />
+                <Route path="/previousbookings" element={<PreviousBookings />} />
             </Routes>
         </BrowserRouter>
     );

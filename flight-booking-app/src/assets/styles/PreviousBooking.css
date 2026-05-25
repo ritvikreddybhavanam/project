@@ -1,0 +1,16 @@
+.my-bookings-layout{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.my-bookings-page{
+    flex: 1;
+    padding: 40px 60px;
+}
+
+.no-bookings{
+    margin-top: 40px;
+    font-size: 18px;
+    color: #666;
+}

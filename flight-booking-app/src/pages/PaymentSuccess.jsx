@@ -2,8 +2,21 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../assets/styles/PaymentSuccess.css";
 
+import { useLocation } from "react-router-dom";
+
 export default function PaymentSuccess() {
+
+    const location = useLocation();
+
+    // GET DATA
+
+    const flight = location.state?.flight;
+    const passenger = location.state?.passenger;
+    const selectedSeat = location.state?.selectedSeat;
+    const totalPrice = location.state?.totalPrice;
+
     return (
+
         <div className="booking-success-page">
 
             <Navbar />
@@ -29,7 +42,10 @@ export default function PaymentSuccess() {
                     <p>
                         Your booking is successful. A confirmation email has
                         been sent to
-                        <span> sterling.j@example.com</span>
+                        <span>
+                            {" "}
+                            {passenger?.email}
+                        </span>
                     </p>
 
                 </section>
@@ -54,18 +70,24 @@ export default function PaymentSuccess() {
                             </h2>
 
                             <div className="info-row">
+
                                 <span>Name</span>
-                                <b>Mr. Jonathan Sterling</b>
+
+                                <b>
+                                    {passenger?.firstName} {" "}
+                                    {passenger?.lastName}
+                                </b>
+
                             </div>
 
                             <div className="info-row">
-                                <span>Nationality</span>
-                                <b>United States</b>
+                                <span>Email</span>
+                                <b>{passenger?.email}</b>
                             </div>
 
                             <div className="info-row">
-                                <span>Frequent Flyer</span>
-                                <b>SG-Gold-9234</b>
+                                <span>Phone</span>
+                                <b>{passenger?.phone}</b>
                             </div>
 
                         </div>
@@ -84,13 +106,18 @@ export default function PaymentSuccess() {
                             <div className="flight-top">
 
                                 <div>
-                                    <p className="label">SKYWARD AIR</p>
-                                    <h3>SA-402</h3>
+                                    <p className="label">
+                                        {flight?.airline}
+                                    </p>
+
+                                    <h3>
+                                        {flight?.from} → {flight?.to}
+                                    </h3>
                                 </div>
 
                                 <div className="date-box">
-                                    <p className="label">DATE</p>
-                                    <h3>Oct 14, 2024</h3>
+                                    <p className="label">DURATION</p>
+                                    <h3>{flight?.duration}</h3>
                                 </div>
 
                             </div>
@@ -98,8 +125,8 @@ export default function PaymentSuccess() {
                             <div className="route-box">
 
                                 <div className="airport">
-                                    <h1>JFK</h1>
-                                    <p>New York</p>
+                                    <h1>{flight?.from}</h1>
+                                    <p>{flight?.departureTime}</p>
                                 </div>
 
                                 <div className="flight-line">
@@ -109,8 +136,8 @@ export default function PaymentSuccess() {
                                 </div>
 
                                 <div className="airport">
-                                    <h1>LHR</h1>
-                                    <p>London</p>
+                                    <h1>{flight?.to}</h1>
+                                    <p>{flight?.arrivalTime}</p>
                                 </div>
 
                             </div>
@@ -120,10 +147,13 @@ export default function PaymentSuccess() {
                         {/* DOWNLOAD BUTTON */}
 
                         <button className="download-btn">
+
                             <span className="material-symbols-outlined">
                                 download
                             </span>
+
                             Download Ticket
+
                         </button>
 
                     </div>
@@ -139,8 +169,8 @@ export default function PaymentSuccess() {
                             <div className="ticket-header">
 
                                 <div>
-                                    <h2>Skyward Air</h2>
-                                    <p>BOARDING PASS • BUSINESS CLASS</p>
+                                    <h2>{flight?.airline}</h2>
+                                    <p>BOARDING PASS • ECONOMY CLASS</p>
                                 </div>
 
                                 <span className="material-symbols-outlined plane-icon">
@@ -153,24 +183,40 @@ export default function PaymentSuccess() {
 
                                 <div>
                                     <p className="small-label">PASSENGER</p>
-                                    <h3>STERLING / JONATHAN</h3>
+
+                                    <h3>
+                                        {passenger?.lastName?.toUpperCase()}
+                                        {" / "}
+                                        {passenger?.firstName?.toUpperCase()}
+                                    </h3>
                                 </div>
 
                                 <div>
                                     <p className="small-label">FLIGHT</p>
-                                    <h3>SA 402</h3>
+
+                                    <h3>
+                                        {flight?.airline}
+                                    </h3>
                                 </div>
 
                                 <div>
                                     <p className="small-label">FROM</p>
-                                    <h1>JFK</h1>
-                                    <span>NEW YORK, USA</span>
+
+                                    <h1>{flight?.from}</h1>
+
+                                    <span>
+                                        Departure
+                                    </span>
                                 </div>
 
                                 <div>
                                     <p className="small-label">TO</p>
-                                    <h1>LHR</h1>
-                                    <span>LONDON, UK</span>
+
+                                    <h1>{flight?.to}</h1>
+
+                                    <span>
+                                        Arrival
+                                    </span>
                                 </div>
 
                             </div>
@@ -178,18 +224,33 @@ export default function PaymentSuccess() {
                             <div className="ticket-footer">
 
                                 <div>
-                                    <p className="small-label">GATE</p>
+                                    <p className="small-label">
+                                        GATE
+                                    </p>
+
                                     <h2>B12</h2>
                                 </div>
 
                                 <div className="middle-border">
-                                    <p className="small-label">SEAT</p>
-                                    <h2 className="seat">4A</h2>
+
+                                    <p className="small-label">
+                                        SEAT
+                                    </p>
+
+                                    <h2 className="seat">
+                                        {selectedSeat?.id}
+                                    </h2>
+
                                 </div>
 
                                 <div>
-                                    <p className="small-label">BOARDING</p>
-                                    <h2>07:45</h2>
+                                    <p className="small-label">
+                                        TOTAL
+                                    </p>
+
+                                    <h2>
+                                        ${totalPrice?.toFixed(2)}
+                                    </h2>
                                 </div>
 
                             </div>
@@ -201,19 +262,26 @@ export default function PaymentSuccess() {
                         <div className="ticket-qr">
 
                             <div className="qr-box">
+
                                 <img
-                                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SG982341004A"
+                                    src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${selectedSeat?.id}`}
                                     alt="QR"
                                 />
+
                             </div>
 
                             <div className="departure-time">
+
                                 <p>DEPARTURE TIME</p>
-                                <h3>08:30 AM</h3>
+
+                                <h3>
+                                    {flight?.departureTime}
+                                </h3>
+
                             </div>
 
                             <span className="ticket-code">
-                                SG982341004A
+                                {selectedSeat?.id}
                             </span>
 
                         </div>
