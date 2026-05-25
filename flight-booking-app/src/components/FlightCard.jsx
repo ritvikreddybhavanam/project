@@ -1,6 +1,9 @@
 import "../assets/styles/FlightCard.css";
+import { useNavigate } from "react-router-dom";
 
 export default function FlightCard({ flight }) {
+
+    const navigate = useNavigate();
 
     return (
 
@@ -57,7 +60,10 @@ export default function FlightCard({ flight }) {
 
                 <h1>${flight.price}</h1>
 
-                <button>
+                <button onClick={() => navigate("/booking", {
+                    state: { flight }})
+                    }
+                >
                     SELECT FLIGHT
                 </button>
 

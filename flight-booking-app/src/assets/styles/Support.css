@@ -1,90 +1,60 @@
 .help-section{
     position: relative;
-
     background: #0f172a;
-
     padding: 100px 20px;
-
     overflow: hidden;
 }
 
 .help-container{
     position: relative;
     z-index: 2;
-
     max-width: 800px;
-
     margin: auto;
-
     text-align: center;
 }
 
 .help-container h1{
     font-size: 52px;
-
     color: white;
-
     margin-bottom: 40px;
-
     font-weight: 700;
 }
 
 .search-box{
     position: relative;
-
     display: flex;
     align-items: center;
-
     background: white;
-
     border-radius: 18px;
-
     padding: 12px;
-
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .search-icon{
     position: absolute;
-
     left: 25px;
-
     color: #666;
-
     font-size: 28px;
 }
 
 .search-box input{
     flex: 1;
-
     border: none;
-
     outline: none;
-
     padding: 20px 20px 20px 65px;
-
     font-size: 18px;
-
     border-radius: 18px;
 }
 
 .search-box button{
     border: none;
-
     background: #ff7a00;
-
     color: white;
-
     padding: 16px 28px;
-
     border-radius: 12px;
-
     font-size: 16px;
-
     font-weight: 600;
-
     cursor: pointer;
-
     transition: 0.3s;
 }
 
@@ -94,28 +64,22 @@
 
 .popular-links{
     margin-top: 25px;
-
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
-
     flex-wrap: wrap;
 }
 
 .popular-links span{
     color: rgba(255,255,255,0.7);
-
     font-size: 15px;
-
     font-weight: 600;
 }
 
 .popular-links a{
     color: #ffb347;
-
     font-size: 15px;
-
     transition: 0.3s;
 }
 
@@ -125,28 +89,22 @@
 
 .bg-circle{
     position: absolute;
-
     width: 350px;
     height: 350px;
-
     border-radius: 50%;
-
     filter: blur(100px);
-
     opacity: 0.2;
 }
 
 .top-circle{
     top: -120px;
     right: -120px;
-
     background: #ff7a00;
 }
 
 .bottom-circle{
     bottom: -120px;
     left: -120px;
-
     background: #38bdf8;
 }
 

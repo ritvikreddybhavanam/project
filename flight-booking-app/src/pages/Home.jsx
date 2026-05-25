@@ -95,7 +95,7 @@ export default function Home() {
         </div>
       </div>
       <div className="subscribe">
-        <span class="material-symbols-outlined">mail</span>
+        <span className="material-symbols-outlined">mail</span>
           <h2 className="title">Elevate Your Travel Intelligence</h2>
           <p className="description">
               Join 500,000+ frequent and flyers and receive exclusive fare alerts, travel tips, and premium <br/>
