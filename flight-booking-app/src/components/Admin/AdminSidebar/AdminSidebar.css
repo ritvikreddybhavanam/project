@@ -1,0 +1,145 @@
+/* =========================
+   SIDEBAR
+========================= */
+
+.skyadmin-sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:270px;
+    height:100vh;
+
+    background:#ffffff;
+    border-right:1px solid #e5e7eb;
+
+    padding:30px 20px;
+
+    display:flex;
+    flex-direction:column;
+
+    overflow-y:auto;
+    z-index:1000;
+
+    flex-shrink:0;
+}
+
+/* BRAND */
+
+.skyadmin-brand{
+    margin-bottom:40px;
+}
+
+.skyadmin-brand-title{
+    font-size:28px;
+    font-weight:800;
+    color:#2563eb;
+    line-height:1.1;
+}
+
+.skyadmin-brand-subtitle{
+    font-size:14px;
+    color:#6b7280;
+    margin-top:4px;
+}
+
+/* NAVIGATION */
+
+.skyadmin-navigation{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+/* BUTTON */
+
+.skyadmin-nav-button{
+    width:100%;
+
+    border:none;
+    outline:none;
+
+    background:transparent;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:14px 16px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:15px;
+    font-weight:600;
+
+    color:#374151;
+
+    transition:all 0.25s ease;
+}
+
+.skyadmin-nav-button:hover{
+    background:#eff6ff;
+    color:#2563eb;
+
+    transform:translateX(4px);
+}
+
+/* ACTIVE */
+
+.skyadmin-active-nav{
+    background:#2563eb !important;
+    color:white !important;
+
+    box-shadow:0 10px 25px rgba(37,99,235,0.22);
+}
+
+.skyadmin-active-nav:hover{
+    transform:none;
+}
+
+/* ICON */
+
+.skyadmin-nav-button svg{
+    flex-shrink:0;
+}
+
+/* SCROLLBAR */
+
+.skyadmin-sidebar::-webkit-scrollbar{
+    width:6px;
+}
+
+.skyadmin-sidebar::-webkit-scrollbar-thumb{
+    background:#d1d5db;
+    border-radius:20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:900px){
+
+    .skyadmin-sidebar{
+        width:100%;
+        height:auto;
+
+        position:relative;
+
+        border-right:none;
+        border-bottom:1px solid #e5e7eb;
+
+        padding:20px;
+    }
+
+    .skyadmin-navigation{
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+
+    .skyadmin-nav-button{
+        width:auto;
+    }
+}
